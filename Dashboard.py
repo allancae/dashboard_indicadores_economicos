@@ -36,5 +36,5 @@ response = requests.get(urlinflacao)
 dadosinflacao = pd.DataFrame.from_dict(response.json())
 
 st.header('ENDIVIDAMENTO DAS FAMÍLIAS')
-fig_inflacao = px.line(dadosinflacao, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Endividamento das famílias com o Sistema Financeiro Nacional em relação à renda acumulada dos últimos doze meses')
+fig_inflacao = px.line(dadosinflacao, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Endividamento das famílias em relação à renda acumulada dos últimos doze meses')
 st.plotly_chart(fig_inflacao)

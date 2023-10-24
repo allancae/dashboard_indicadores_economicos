@@ -16,7 +16,7 @@ dadosbacen = pd.DataFrame.from_dict(response.json())
 st.header('Inadimplência BACEN')
 
 # Gráfico de linhas do plotly 
-fig = px.line(dadosbacen, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Gráfico de Linha a partir de um DataFrame')
+fig = px.line(dadosbacen, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Somatório do saldo das operações de crédito com atraso de 15 a 90 dias')
 
 st.plotly_chart(fig)
 
@@ -27,14 +27,14 @@ response = requests.get(urlbacenipca)
 dadosbacenipca = pd.DataFrame.from_dict(response.json())
 
 # Gráfico de linhas do plotly ipca
-fig_ipca = px.line(dadosbacenipca, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Gráfico de Linha a partir de um DataFrame')
+fig_ipca = px.line(dadosbacenipca, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Índice de Preços ao Consumidor-Amplo (IPCA)')
 st.plotly_chart(fig_ipca)
 
 
-urlinflacao = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados?formato=json&dataInicial=01/01/2010&dataFinal=31/12/2023'
+urlinflacao = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.29037/dados?formato=json&dataInicial=01/01/2010&dataFinal=31/12/2023'
 response = requests.get(urlinflacao)
 dadosinflacao = pd.DataFrame.from_dict(response.json())
 
-st.header('INFLAÇÃO')
-fig_inflacao = px.line(dadosinflacao, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Gráfico de Linha a partir de um DataFrame')
+st.header('ENDIVIDAMENTO DAS FAMÍLIAS')
+fig_inflacao = px.line(dadosinflacao, x='data', y='valor', labels={'tempo': 'Eixo X', 'valor': 'Eixo Y'}, title='Endividamento das famílias com o Sistema Financeiro Nacional em relação à renda acumulada dos últimos doze meses')
 st.plotly_chart(fig_inflacao)
